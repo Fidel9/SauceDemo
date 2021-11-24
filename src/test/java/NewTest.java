@@ -6,6 +6,7 @@ public class NewTest extends BasicTest{
     String getSearchWithText = "//div[text()='Sauce Labs Backpack']";
     String attributeContains = "//div[contains(@class,'login_password')]";
     String textText = "//h4[contains(text(),'usernames are:')]";
+    String ancestor = "";
 
     @Test
     public void searcshLocator() {
@@ -14,8 +15,8 @@ public class NewTest extends BasicTest{
         driver.findElement(By.xpath(getSearchWithText));
         driver.findElement(By.xpath(attributeContains));
         driver.findElement(By.xpath(textText));
-       /* driver.findElement();
-        driver.findElement();
+        driver.findElement(By.xpath(ancestor));
+       /*driver.findElement();
         driver.findElement();
         driver.findElement();
         driver.findElement();
