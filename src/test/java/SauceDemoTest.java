@@ -35,6 +35,7 @@ public class SauceDemoTest extends BasicTest {
         String thingsFromCatalog = driver.findElement(By.xpath("//div[@class='inventory_item_name']")).getText();
         String priceThingsFromCatalog = driver.findElement(By.xpath("//div[@class='inventory_item_price']")).getText();
 
+        //завтра поиграю с кодом попробую добавить более сложный путь
         // String thingsFromCatalog2 = driver.findElement(By.xpath("")).getText();
 
         WebElement buttonItem = driver.findElement(By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']"));
