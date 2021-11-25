@@ -13,6 +13,18 @@ public class NewTest extends BasicTest {
     String preceding = "//div[@class='header_secondary_container']//preceding::div";
     String and = "//a[@id='inventory_sidebar_link' and @style='display: block;']";
 
+    String classCss = ".primary_header";
+    String classClassCss = ".login-box .form_group";
+    String idCss = "#root";
+    String tagNameCss = "input[name='first_name']";
+    String tagNameClassCss = "div.form_column";
+    String attributeValueCss1 = "input[name='user-name']";
+    String attributeValueCss2 = "";
+    String attributeValueCss3 = "[lang|=en]";
+    String attributeValueCss4 = "input[id^='user-']";
+    String attributeValueCss5 = "input[id$='name']";
+    String attributeValueCss6 = "div[id*='login']";
+
     @Test
     public void xPathLocator() {
         driver.get("https://www.saucedemo.com/inventory.html");
@@ -69,5 +81,25 @@ descendant:: — можно заменить на «.//»
 parent:: — можно заменить на «..»
 self:: — можно заменить на «.»
         */
+    }
+
+    @Test
+    void cssSelector() {
+        driver.get("https://www.saucedemo.com/inventory.html");
+
+        driver.findElement(By.cssSelector(classCss));
+        driver.findElement(By.cssSelector(classClassCss));
+        driver.findElement(By.cssSelector(idCss));
+
+        driver.findElement(By.cssSelector(tagNameCss));
+        driver.findElement(By.cssSelector(tagNameClassCss));
+
+        driver.findElement(By.cssSelector(attributeValueCss1));
+        driver.findElement(By.cssSelector(attributeValueCss2));
+        driver.findElement(By.cssSelector(attributeValueCss3));
+        driver.findElement(By.cssSelector(attributeValueCss4));
+        driver.findElement(By.cssSelector(attributeValueCss5));
+        driver.findElement(By.cssSelector(attributeValueCss6));
+
     }
 }
