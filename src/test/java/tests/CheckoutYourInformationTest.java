@@ -23,28 +23,31 @@ public class CheckoutYourInformationTest extends BaseTest {
         checkoutYourInformation.criticalPathTest();
         checkoutYourInformation.open();
         checkoutYourInformation.checkInfoNameAndLastName("qwer","qwer","qwer");
-        Assert.assertEquals(checkoutYourInformation.getErrorMessage(),"Тест в zip/postal code проошел без цифр BUG");
+        Assert.assertEquals(checkoutYourInformation.getErrorMessage(),"Error: Postal Code is required",
+                "Тест в zip/postal code проошел без цифр BUG");
     }
     @Test
     public void checkUserLastName(){
         checkoutYourInformation.criticalPathTest();
         checkoutYourInformation.open();
         checkoutYourInformation.checkInfoNameAndLastName("Bob","","12345");
-        Assert.assertEquals(loginPage.getErrorMessage(),"Error: Last Name is required",
-                "");
+        Assert.assertEquals(checkoutYourInformation.getErrorMessage(),"Error: Last Name is required",
+                "Не заполнено второе имя");
     }
     @Test
     public void checkZipOrPostalCode(){
         checkoutYourInformation.criticalPathTest();
         checkoutYourInformation.open();
         checkoutYourInformation.checkInfoNameAndLastName("","Bruce","12345");
-        Assert.assertEquals(loginPage.getErrorMessage(),"Error: First Name is required");
+        Assert.assertEquals(checkoutYourInformation.getErrorMessage(),"Error: First Name is required",
+                "Не заполнено первое имя");
     }
     @Test
     public void pushContinue(){
         checkoutYourInformation.criticalPathTest();
         checkoutYourInformation.open();
         checkoutYourInformation.checkInfoNameAndLastName("Bob","Bruce","");
-        Assert.assertEquals(loginPage.getErrorMessage(),"Error: Zip/Postal code  is required");
+        Assert.assertEquals(checkoutYourInformation.getErrorMessage(),"Error: Postal Code is required",
+                "Ошибка поля Zip/Postal код");
     }
 }

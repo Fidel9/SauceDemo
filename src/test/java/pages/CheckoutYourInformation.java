@@ -21,7 +21,6 @@ public class CheckoutYourInformation extends BasePage {
     String loginButton = "[name='login-button']";
 
 
-
     public CheckoutYourInformation(WebDriver driver) {
         super(driver);
     }
@@ -40,7 +39,6 @@ public class CheckoutYourInformation extends BasePage {
     public String getErrorMessage() {
         return driver.findElement(ERROR_MESSAGE_CHECK_INFO).getText();
     }
-
 
     public void criticalPathTest() {
         driver.get("https://www.saucedemo.com/");
