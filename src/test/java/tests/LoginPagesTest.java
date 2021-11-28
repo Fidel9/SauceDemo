@@ -61,25 +61,28 @@ public class LoginPagesTest extends BaseTest {
     public void usrNameShouldBeRequired(){
         loginPage.open();
         loginPage.login("","secret_sauce");
-        Assert.assertEquals(loginPage.getErrorMessage(),"");
+        Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Username is required",
+                "Собщение об ошибке не верно");
     }
     @Test
     public void passwordShouldBeRequired(){
         loginPage.open();
         loginPage.login("standard_user","");
-        Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Username is required",
-                " Username and password do not match any user in this service");
+        Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Password is required",
+                "Собщение об ошибке не верно");
     }
     @Test
     public void UserDataBeRequired(){
         loginPage.open();
         loginPage.login("abcd","abc");
-        Assert.assertEquals(loginPage.getErrorMessage(),"");
+        Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Username and password do not match any user in this service",
+                "Собщение об ошибке не верно");
     }
     @Test
     public void lockedUser(){
         loginPage.open();
-        loginPage.login("","secret_sauce");
-        Assert.assertEquals(loginPage.getErrorMessage(),"");
+        loginPage.login("locked_out_user","secret_sauce");
+        Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Sorry, this user has been locked out.",
+                "Собщение об ошибке не верно");
     }
 }

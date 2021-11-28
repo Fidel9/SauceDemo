@@ -9,7 +9,7 @@ public class LoginPage extends BasePage  {
     public  static final By USERNAME_INPUT = By.xpath("//input[@name='user-name']");
     public static  final By PASSWORD_INPUT = By.id("password");
     public static final  By LOGIN_BUTTON = By.cssSelector("[name='login-button']");
-    public static final By ERROR_MESSAGE = By.cssSelector(".error_message_container");
+    public static final By ERROR_MESSAGE = By.cssSelector(".error-message-container");
 
 
     public LoginPage(WebDriver driver){

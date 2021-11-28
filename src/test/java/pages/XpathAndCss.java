@@ -1,9 +1,10 @@
-package tests;
+package pages;
 
 import org.openqa.selenium.By;
-import org.testng.annotations.Test;
+import org.openqa.selenium.WebDriver;
 
-public class NewTest extends BaseTest {
+
+public class XpathAndCss extends BasePage {
     String searchWithAttribute = "//div[@class='page_wrapper']";
     String getSearchWithText = "//div[text()='Sauce Labs Backpack']";
     String attributeContains = "//div[contains(@class,'login_password')]";
@@ -27,7 +28,11 @@ public class NewTest extends BaseTest {
     String attributeValueCss5 = "input[id$='name']";
     String attributeValueCss6 = "div[id*='login']";
 
-    @Test
+    public XpathAndCss(WebDriver driver) {
+        super(driver);
+    }
+
+
     public void xPathLocator() {
         driver.get("https://www.saucedemo.com/inventory.html");
         driver.findElement(By.xpath(searchWithAttribute));
@@ -85,7 +90,7 @@ self:: — можно заменить на «.»
         */
     }
 
-    @Test
+
     void cssSelector() {
         driver.get("https://www.saucedemo.com/inventory.html");
 

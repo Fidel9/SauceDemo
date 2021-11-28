@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class InventoryPage extends BasePage{
-        public static final String ADD_PRODUCT_BUTTON = "//div[div[div[div[a[div[@class='inventory_item_name'[text()='%s']]]]]//button";
+        public static final String ADD_PRODUCT_BUTTON = "//div[div[div[a[div[@class='inventory_item_name'][text()='%s']]]]]//button";
 
    public InventoryPage(WebDriver driver){
        super(driver);

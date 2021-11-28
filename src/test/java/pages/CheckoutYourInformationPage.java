@@ -4,9 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static pages.LoginPage.USERNAME_INPUT;
 
-public class CheckoutYourInformation extends BasePage {
+public class CheckoutYourInformationPage extends BasePage {
     public static final By USERNAME_INPUT_CHECK_INFO = By.id("first-name");
     public static final By LASTNAME_INPUT_CHECK_INFO = By.id("last-name");
     public static final By ZIP_POSTAL_INPUT_CHECK_INFO = By.id("postal-code");
@@ -14,14 +13,13 @@ public class CheckoutYourInformation extends BasePage {
     public static final By ERROR_MESSAGE_CHECK_INFO = By.xpath("//div[@class='error-message-container error']");
 
     public static final By LAST_PAGE = By.xpath("//span[@class='title']");
-    public static final By FINISH_BUTTON = By.xpath("//button[@id='finish']");
 
     String userName = "//input[@name='user-name']";
     String passwordUser = "password";
     String loginButton = "[name='login-button']";
 
 
-    public CheckoutYourInformation(WebDriver driver) {
+    public CheckoutYourInformationPage(WebDriver driver) {
         super(driver);
     }
 
@@ -40,7 +38,7 @@ public class CheckoutYourInformation extends BasePage {
         return driver.findElement(ERROR_MESSAGE_CHECK_INFO).getText();
     }
 
-    public void criticalPathTest() {
+    public void criticalPath() {
         driver.get("https://www.saucedemo.com/");
         WebElement userNameElement = driver.findElement(By.xpath(userName));
         userNameElement.sendKeys(driver.findElement(By.xpath("//div[@id='login_credentials']"))
@@ -56,21 +54,14 @@ public class CheckoutYourInformation extends BasePage {
         WebElement loginButtonPress = driver.findElement(By.cssSelector(loginButton));
         loginButtonPress.click();
 
-        String thingsFromCatalog = driver.findElement(By.xpath("//div[@class='inventory_item_name']")).getText();
-        String priceThingsFromCatalog = driver.findElement(By.xpath("//div[@class='inventory_item_price']")).getText();
-
         WebElement buttonItem = driver.findElement(By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']"));
         buttonItem.click();
         WebElement cartLink = driver.findElement(By.xpath("//a[@class='shopping_cart_link']"));
         cartLink.click();
-
     }
 
     public void nextPageCheckoutOverview() {
         driver.findElement(LAST_PAGE);
     }
 
-    public void finishPageButton() {
-        driver.findElement(FINISH_BUTTON);
-    }
 }
