@@ -1,36 +1,45 @@
-Проверяем страницу CheckoutPage.
+#CHECKLIST
 
-Проверяем переход из главной страницы на проверяемую
-ожидаеммый результат: перешли на CheckoutPage
-фактический: перешли на CheckoutPage
+ loginPagesTest
+ input: mvn clean test -DsuiteXmlFile='src/test/resources/regression.xml'
+ output: 
+ [INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 304.07 s - in TestSuite
+ 
+ [INFO] Results:
 
-Проверяем ввод First Name:
-Проверяем ввод Last Name:
-Проверяем ввод Zip/Postal code:
-Заполняем все поля и нажимаем на кнопку continue.
-ожидаемый результат: переходим на другую страницу.
-фактический: перешли на другую страницу.
+ [INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+ 
+ [INFO] ------------------------------------------------------------------------
+ [INFO] BUILD SUCCESS
+ [INFO] ------------------------------------------------------------------------
+ [INFO] Total time:  05:52 min
+ [INFO] Finished at: 2021-12-24T12:01:11+03:00
+ [INFO] ------------------------------------------------------------------------
 
-Проверяем ввод First Name:
-Заполняем все поля кроме First Name и 
-нажимаем на кнопку continue.
-ожидаемый результат: Error: First Name is required.
-фактический:Error: First Name is required.
 
-Проверяем ввод Last Name:
-Заполняем все поля кроме Last Name и
-нажимаем на кнопку continue.
-ожидаемый результат: Error: Last Name is required.
-фактический:Error: Last Name is required.
+ ProductsCriticalPathTest
+ input:  mvn clean test -DsuiteXmlFile='src/test/resources/regression.xml'
+ output:
+ Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 61.086 s - in TestSuite
+ [INFO] Results:
 
-Проверяем ввод Zip/Postal code:
-Заполняем все поля кроме Zip/Postal code и
-нажимаем на кнопку continue.
-ожидаемый результат: Error: Zip/Postal code is required.
-фактический:Error: Zip/Postal code is required.
+ [INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+ [INFO] ------------------------------------------------------------------------
+ [INFO] BUILD SUCCESS
+ [INFO] ------------------------------------------------------------------------
+ [INFO] Total time:  01:17 min
+ [INFO] Finished at: 2021-12-24T12:13:02+03:00
 
-Проверяем ввод Zip/Postal code:
-Заполняем все поля, Zip/Postal code заполняем буквами,
-нажимаем на кнопку continue.
-ожидаемый результат: Error: Zip/Postal code is required.
-фактический:Error: Перешли на другую страницу.
+
+  команда для просмотра доступных
+  обновлений библиотек:
+  mvn versions:display-dependency-updates
+  [INFO] --- versions-maven-plugin:2.8.1:display-dependency-updates (default-cli) @ SauceDemo ---
+  [INFO] artifact org.seleniumhq.selenium:selenium-java: checking for updates from central
+  [INFO] artifact org.testng:testng: checking for updates from central
+  [INFO] artifact io.github.bonigarcia:webdrivermanager: checking for updates from central
+  [INFO] No dependencies in Dependencies have newer versions.
+  [INFO] ------------------------------------------------------------------------
+  [INFO] BUILD SUCCESS
+  [INFO] ------------------------------------------------------------------------
+  [INFO] Total time:  37.894 s

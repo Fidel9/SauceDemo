@@ -4,18 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.util.RetryAnalyzerCount;
 
 public class LoginPagesTest extends BaseTest {
     String userName = "//input[@name='user-name']";
     String passwordUser = "password";
     String loginButton = "[name='login-button']";
 
-    //  String thingsFromCatalog = "//div[@class='inventory_item_name']";
-    // String priceThingsFromCatalog = "//div[@class='inventory_item_price']";
-    // String buttonItem = "//button[@id='add-to-cart-sauce-labs-backpack']";
-    // String cartLink = "//a[@class='shopping_cart_link']";
-    // String thingsForCart = driver.findElement(By.xpath("//div[@class='inventory_item_name']"));
-    //  String priceThingsForCartItem = driver.findElement(By.xpath("//div[@class='inventory_item_price']")).getText();
 
     @Test
     public  void checkingAddingToCart(){
