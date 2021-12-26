@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.util.RetryAnalyzerCount;
+import utils.AllureUtils;
 
 public class LoginPagesTest extends BaseTest {
     String userName = "//input[@name='user-name']";
@@ -52,28 +53,29 @@ public class LoginPagesTest extends BaseTest {
         Assert.assertEquals(thingsForCart, thingsFromCatalog);
         Assert.assertEquals(priceThingsForCartItem, priceThingsFromCatalog);
     }
-    @Test
+    @Test(description = "Username should be required")
     public void usrNameShouldBeRequired(){
         loginPage.open();
         loginPage.login("","secret_sauce");
         Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Username is required",
                 "Собщение об ошибке не верно");
     }
-    @Test
+    @Test(description = "Password should be required")
     public void passwordShouldBeRequired(){
         loginPage.open();
         loginPage.login("standard_user","");
         Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Password is required",
                 "Собщение об ошибке не верно");
     }
-    @Test
+    @Test(description = "Userdata should be required")
     public void UserDataBeRequired(){
         loginPage.open();
         loginPage.login("abcd","abc");
         Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Username and password do not match any user in this service",
                 "Собщение об ошибке не верно");
+        AllureUtils.takeScreenshot(driver);
     }
-    @Test
+    @Test(description = "Locked User")
     public void lockedUser(){
         loginPage.open();
         loginPage.login("locked_out_user","secret_sauce");
