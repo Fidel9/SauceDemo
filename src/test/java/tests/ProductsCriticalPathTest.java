@@ -9,7 +9,7 @@ public class ProductsCriticalPathTest extends BaseTest {
     public void productShouldBeAddedIntoCart(){
      loginPage.open();
      loginPage.login("standard_user","secret_sauce");
-     log.info("вход на страницу проверяет userName и пассворд");
+     log.info("вход на страницу проверяет userName и password");
 
      inventoryPage.addToCart("Sauce Labs Onesie");
     // cartPage.open();

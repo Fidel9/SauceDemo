@@ -26,7 +26,7 @@ public class BaseTest {
 
     @BeforeMethod(description = "Setup and start browser")
     public void setup(ITestContext context) {
-        log.info("начало теста");
+        log.info("<----- начало теста ----->");
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");

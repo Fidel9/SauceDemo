@@ -17,7 +17,9 @@ public class CheckoutYourInformationTest extends BaseTest {
 
         String textFromTitle = driver.findElement(By.xpath("//span[@Class='title']")).getText();
         Assert.assertEquals(textFromTitle, "CHECKOUT: YOUR INFORMATION", "Текст не соответствует ожидаемому.");
+        log.info("сравнивает  по тексту" + textFromTitle);
     }
+
 
    /* @Test
     public void checkUserZipPostalCode() {
@@ -27,6 +29,8 @@ public class CheckoutYourInformationTest extends BaseTest {
         checkoutYourInformation.checkInfoNameAndLastName("qwer", "qwer", "qwer");
         Assert.assertEquals(checkoutYourInformation.getErrorMessage(), "Error: Postal Code is required",
                 "Тест в zip/postal code проошел без цифр. BUG");
+        log.error(checkoutYourInformation.getErrorMessage());
+        log.debug(checkoutYourInformation.getErrorMessage());
     }*/
 
     @Test
@@ -37,16 +41,19 @@ public class CheckoutYourInformationTest extends BaseTest {
         checkoutYourInformation.checkInfoNameAndLastName("Bob", "", "12345");
         Assert.assertEquals(checkoutYourInformation.getErrorMessage(), "Error: Last Name is required",
                 "Не заполнено второе имя");
+        log.info("проверяет ввод фамилии на страницы регистрации");
+        log.error(checkoutYourInformation.getErrorMessage());
     }
 
     @Test
     public void checkUserFirstName() {
-        log.info("проверяет первое имя");
         checkoutYourInformation.criticalPath();
         checkoutYourInformation.open();
         checkoutYourInformation.checkInfoNameAndLastName("", "Bruce", "12345");
         Assert.assertEquals(checkoutYourInformation.getErrorMessage(), "Error: First Name is required",
                 "Не заполнено первое имя");
+        log.info("проверяет ввод имени на страницы регистрации");
+        log.error(checkoutYourInformation.getErrorMessage());
     }
 
     @Test
@@ -57,5 +64,6 @@ public class CheckoutYourInformationTest extends BaseTest {
         checkoutYourInformation.checkInfoNameAndLastName("Bob", "Bruce", "");
         Assert.assertEquals(checkoutYourInformation.getErrorMessage(), "Error: Postal Code is required",
                 "Ошибка поля Zip/Postal код");
+        log.error(checkoutYourInformation.getErrorMessage());
     }
 }

@@ -17,10 +17,10 @@ public class LoginPagesTest extends BaseTest {
 
 
     @Test
-    public  void checkingAddingToCart(){
-        log.info("проверка userName и пассворд");
+    public void checkingAddingToCart() {
+        log.info("<----- проверка userName и пассворд ----->");
         loginPage.open();
-        loginPage.login("standard_user","secret_sauce");
+        loginPage.login("standard_user", "secret_sauce");
         //TODO add checks after login
     }
 
@@ -54,39 +54,54 @@ public class LoginPagesTest extends BaseTest {
         String priceThingsForCartItem = driver.findElement(By.xpath("//div[@class='inventory_item_price']")).getText();
 
         Assert.assertEquals(thingsForCart, thingsFromCatalog);
+        log.info("сравнивает вещь из" + thingsForCart + "с вещью из " + thingsFromCatalog);
+
         Assert.assertEquals(priceThingsForCartItem, priceThingsFromCatalog);
+        log.info("сравнивает цену из item" + priceThingsForCartItem + "с ценой из каталога" + priceThingsFromCatalog);
     }
+
     @Test(description = "Username should be required")
-    public void usrNameShouldBeRequired(){
+    public void usrNameShouldBeRequired() {
         log.info("проверка ввода имени");
         loginPage.open();
-        loginPage.login("","secret_sauce");
-        Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Username is required",
+        loginPage.login("", "secret_sauce");
+        Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username is required",
                 "Собщение об ошибке не верно");
+        log.info("ввод имени должен быть коректный ");
+        log.error(loginPage.getErrorMessage());
     }
+
     @Test(description = "Password should be required")
-    public void passwordShouldBeRequired(){
+    public void passwordShouldBeRequired() {
         log.info("проверка пассворда");
         loginPage.open();
-        loginPage.login("standard_user","");
-        Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Password is required",
+        loginPage.login("standard_user", "");
+        Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Password is required",
                 "Собщение об ошибке не верно");
+        log.info("пассворд должен быть коректным");
+        log.error(loginPage.getErrorMessage());
     }
+
     @Test(description = "Userdata should be required")
-    public void UserDataBeRequired(){
+    public void UserDataBeRequired() {
         log.info("проверка user-Name и Password");
         loginPage.open();
-        loginPage.login("abcd","abc");
-        Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Username and password do not match any user in this service",
+        loginPage.login("abcd", "abc");
+        Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username and password do not match any user in this service",
                 "Собщение об ошибке не верно");
         AllureUtils.takeScreenshot(driver);
+        log.info("имя userName и  Password должны быть коректны");
+        log.error(loginPage.getErrorMessage());
     }
+
     @Test(description = "Locked User")
-    public void lockedUser(){
+    public void lockedUser() {
         log.info("Locked User");
         loginPage.open();
-        loginPage.login("locked_out_user","secret_sauce");
-        Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Sorry, this user has been locked out.",
+        loginPage.login("locked_out_user", "secret_sauce");
+        Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Sorry, this user has been locked out.",
                 "Собщение об ошибке не верно");
+        log.info("Locked out!!!!");
+        log.error(loginPage.getErrorMessage());
     }
 }
