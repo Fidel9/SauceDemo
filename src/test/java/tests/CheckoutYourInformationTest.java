@@ -1,13 +1,16 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Log4j2
 public class CheckoutYourInformationTest extends BaseTest {
 
     @Test
     public void nextPageUnderCheckoutYourInformation() {
+        log.info("Проверяет последовательность открытия другой страницы");
         checkoutYourInformation.criticalPath();
         checkoutYourInformation.open();
         checkoutYourInformation.nextPageCheckoutOverview();
@@ -18,15 +21,17 @@ public class CheckoutYourInformationTest extends BaseTest {
 
     @Test
     public void checkUserZipPostalCode() {
+        log.debug("проверка ввода zipOrPost кода, зип код должен принимать только цифры");
         checkoutYourInformation.criticalPath();
         checkoutYourInformation.open();
         checkoutYourInformation.checkInfoNameAndLastName("qwer", "qwer", "qwer");
         Assert.assertEquals(checkoutYourInformation.getErrorMessage(), "Error: Postal Code is required",
-                "Тест в zip/postal code проошел без цифр BUG");
+                "Тест в zip/postal code проошел без цифр. BUG");
     }
 
     @Test
     public void checkUserLastName() {
+        log.info("проверяет ввод фамилии");
         checkoutYourInformation.criticalPath();
         checkoutYourInformation.open();
         checkoutYourInformation.checkInfoNameAndLastName("Bob", "", "12345");
@@ -36,6 +41,7 @@ public class CheckoutYourInformationTest extends BaseTest {
 
     @Test
     public void checkUserFirstName() {
+        log.info("проверяет первое имя");
         checkoutYourInformation.criticalPath();
         checkoutYourInformation.open();
         checkoutYourInformation.checkInfoNameAndLastName("", "Bruce", "12345");
@@ -45,6 +51,7 @@ public class CheckoutYourInformationTest extends BaseTest {
 
     @Test
     public void checkUserZipPostalCode2() {
+        log.info("проверяет zipOrPostal код на правильность ввода в даном случае, не вводит ни чего");
         checkoutYourInformation.criticalPath();
         checkoutYourInformation.open();
         checkoutYourInformation.checkInfoNameAndLastName("Bob", "Bruce", "");

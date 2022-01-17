@@ -1,5 +1,6 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -7,6 +8,8 @@ import org.testng.annotations.Test;
 import org.testng.util.RetryAnalyzerCount;
 import utils.AllureUtils;
 
+
+@Log4j2
 public class LoginPagesTest extends BaseTest {
     String userName = "//input[@name='user-name']";
     String passwordUser = "password";
@@ -15,6 +18,7 @@ public class LoginPagesTest extends BaseTest {
 
     @Test
     public  void checkingAddingToCart(){
+        log.info("проверка userName и пассворд");
         loginPage.open();
         loginPage.login("standard_user","secret_sauce");
         //TODO add checks after login
@@ -24,6 +28,7 @@ public class LoginPagesTest extends BaseTest {
 
     @Test
     public void criticalPathTest() {
+        log.info("проверяет вход на страницу");
         driver.get("https://www.saucedemo.com/");
         WebElement userNameElement = driver.findElement(By.xpath(userName));
         userNameElement.sendKeys(driver.findElement(By.xpath("//div[@id='login_credentials']"))
@@ -55,6 +60,7 @@ public class LoginPagesTest extends BaseTest {
     }
     @Test(description = "Username should be required")
     public void usrNameShouldBeRequired(){
+
         loginPage.open();
         loginPage.login("","secret_sauce");
         Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Username is required",

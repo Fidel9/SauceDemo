@@ -9,7 +9,7 @@
     </test> <!-- Test -->
     <test name="test 2">
         <classes>
-            <class name="tests.CheckoutYourInformationTest"/>
+            <class name="tests.ProductsCriticalPathTest"/>
         </classes>
     </test> <!-- Test -->
 
