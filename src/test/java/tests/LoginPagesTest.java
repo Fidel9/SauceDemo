@@ -24,11 +24,9 @@ public class LoginPagesTest extends BaseTest {
         //TODO add checks after login
     }
 
-
-
     @Test
     public void criticalPathTest() {
-        log.info("проверяет вход на страницу");
+        log.info("проверяет вход на страницу userName и password");
         driver.get("https://www.saucedemo.com/");
         WebElement userNameElement = driver.findElement(By.xpath(userName));
         userNameElement.sendKeys(driver.findElement(By.xpath("//div[@id='login_credentials']"))
@@ -60,7 +58,7 @@ public class LoginPagesTest extends BaseTest {
     }
     @Test(description = "Username should be required")
     public void usrNameShouldBeRequired(){
-
+        log.info("проверка ввода имени");
         loginPage.open();
         loginPage.login("","secret_sauce");
         Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Username is required",
@@ -68,6 +66,7 @@ public class LoginPagesTest extends BaseTest {
     }
     @Test(description = "Password should be required")
     public void passwordShouldBeRequired(){
+        log.info("проверка пассворда");
         loginPage.open();
         loginPage.login("standard_user","");
         Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Password is required",
@@ -75,6 +74,7 @@ public class LoginPagesTest extends BaseTest {
     }
     @Test(description = "Userdata should be required")
     public void UserDataBeRequired(){
+        log.info("проверка user-Name и Password");
         loginPage.open();
         loginPage.login("abcd","abc");
         Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Username and password do not match any user in this service",
@@ -83,6 +83,7 @@ public class LoginPagesTest extends BaseTest {
     }
     @Test(description = "Locked User")
     public void lockedUser(){
+        log.info("Locked User");
         loginPage.open();
         loginPage.login("locked_out_user","secret_sauce");
         Assert.assertEquals(loginPage.getErrorMessage(),"Epic sadface: Sorry, this user has been locked out.",
