@@ -42,6 +42,6 @@ public class BaseTest {
     @AfterMethod(alwaysRun = true, description = "Close")
     public void tearDown() {
         driver.quit();
-        log.info("конец теста");
+        log.info(">-----<конец теста>-----<");
     }
 }
